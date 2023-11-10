@@ -1,24 +1,17 @@
 <?php
-
 include 'db.php';
 
-
 if(isset($_POST['insert'])){
+    $nom    = clean($_POST['nom']);
+    $prix   = clean($_POST['prix']);
+    $detail = clean($_POST['detail']);
     
-    $name  = clean($_POST['name']);
-    $batch = clean($_POST['batch']);
-    $email = clean($_POST['email']);
+    $query = "INSERT INTO `student` (nom, prix, detail) VALUES ('".escape($nom)."','".escape($prix)."','".escape($detail)."') ";
     
-    $query = "INSERT INTO `student` (name,batch,email) VALUES ('".escape($name)."','".escape($batch)."','".escape($email)."') ";
-    
-    $result = mysqli_query($conn,$query);
+    $result = mysqli_query($conn, $query);
     
     if($result){
-        
-        header('location:../index.php');
+        header('location: ../index.php');
     }
-    
 }
-
-
 ?>

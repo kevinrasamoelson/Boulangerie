@@ -16,9 +16,9 @@ include 'includes/db.php';
     <table class="table table-hover table-striped">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Batch</th>
-            <th>Email</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>details</th>
             <th>Image</th>
             <th>Action</th>
         </tr>
@@ -33,20 +33,21 @@ if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_array($result)){
         
         $id    = $row['id'];
-        $name  = $row['name'];
-        $email = $row['email'];
-        $batch = $row['batch'];
+        $nom  = $row['nom'];
+        $detail = $row['detail'];
+        $prix    = $row['prix'];
         $image = $row['image'];
 
 ?>
         
         <tr>
             <td><?=$id; ?></td>
-            <td><?=$name; ?></td>
-            <td><?=$email; ?></td>
-            <td><?=$batch; ?></td>
+            <td><?=$nom; ?></td>
+            <td><?=$detail; ?></td>
+            <td><?=$prix; ?></td>
             <td>
-               <img src= "<?= "images/".$image?>" alt="<?= $name ?>" class="thumbnail" width="100px" height="75px">
+                <img src="../images/360_F_556291020_q2ieMiOCKYbtoLITrnt7qcSL1LJYyWrU - Copie.jpeg"
+               <img src= "<?= "images/".$image?>" alt="<?= $nom ?>" class="thumbnail" width="100px" height="75px">
             </td>
             <td><a href="update.php?update=<?php echo $id ?>" class="btn btn-success btn-sm" role="button">Update</a>
             <a href="index.php?delete=<?php echo $id ?>" class="btn btn-danger btn-sm" id="delete" role="button">Delete</a></td>
